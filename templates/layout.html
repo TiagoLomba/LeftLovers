@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <!-- Meta Tag -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- Bootstrap -->
+        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+        <link href="/static/favicon.ico" rel="icon">
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- Page Title -->
+        <title>LeftLovers: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+        <div class="hero">
+            <nav class="menu-nav">
+                <a class="navbar-brand" href="/"><span class="branding">LeftLovers<img src="../static/images/beating-heart.png" class="smallIcon"></span></a>
+                    <div class="dropdown">
+                        {% if session["user_id"] %}
+                            <ul class="d-flex align-items-center mt-3">
+                                <li class="fw-5 menu mt-2"><a href="/">Home</a></li>
+                                <li class="fw-5 menu"><a onclick="toggleMenu()">Menu</a></li>
+                            </ul>
+                        {% else %}
+                            <ul class="d-flex align-items-center">
+                                <li class="fw-5 menu"><a href="/login">Log In</a></li>
+                            </ul>
+                        {% endif %}
+                        <div class="sub-menu-wrap fw-5 mt-3" id="subMenu">
+                            <div class="sub-menu">
+                                <div class="user-info">
+                                    <h3>Hello, {{name}}</h3>
+                                </div>
+                                <hr>
+                                <a href="/restrictions" class="sub-menu-link">
+                                    <i class="bi-shield-minus"></i>
+                                    <p class="m-0">Select Food Restrictions</p>
+                                </a>
+                                <a href="/settings" class="sub-menu-link">
+                                    <i class="bi-gear-fill"></i>
+                                    <p class="m-0">Profile Settings</p>
+                                </a>
+                                <a href="/logout" class="sub-menu-link">
+                                    <i class="bi-toggle-off"></i>
+                                    <p class="m-0">Log Out</p>
+                                </a>
+                                <button class="btn dark-mode-btn">
+                                    <i class="bi bi-lightbulb-fill"></i>
+                                    <span class="fw-4">Dark Mode</span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+            </nav>
+        </div>
+
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary mb-0 text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container-fluid py-5 text-center">
+            {% block main %}{% endblock %}
+        </main>
+        <!-- Scripts -->
+        <script src="../static/open_Menu.js"></script>
+        <script src="../static/dark-mode.js"></script>
+
+        <button class="back-to-top hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="back-to-top-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+            </svg>
+            <script src='../static/button-top.js'></script>
+        </button>
+    </body>
+
+</html>

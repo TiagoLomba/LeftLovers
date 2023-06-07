@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Food Restrictions
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h2>Choose your food and diet restrictions!</h2>
+        <form action="/restrictions" method="POST" id="restrictions-form">
+            <div class="form-container mx-auto rounded-container">
+                <h3 class="text-center mb-3">Cuisine Types</h3>
+                <div class="checkbox-container row justify-content-center align-items-start">
+                    {% for cuisine in cuisineType %}
+                    <div class="col-6 col-md-4 justify-content-center align-items-center">
+                        <label for="{{ cuisine }}" class="checkbox-inline m-2">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="form-check-input m-1 checkbox-restrictions cuisine-chk"
+                                    id="{{ cuisine }}" value="{{ cuisine }}">
+                            </div>
+                            <span>{{ cuisine | capitalize }}</span>
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <h3 class="text-center mb-3">Diet Restrictions</h3>
+                <div class="checkbox-container row justify-content-center align-items-start">
+                    {% for restriction in health %}
+                    <div class="col-6 col-md-4">
+                        <label for="{{ restriction }}" class="checkbox-inline m-2">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="form-check-input m-1 checkbox-restrictions health-chk"
+                                    id="{{ restriction }}" value="{{ restriction }}">
+                            </div>
+                            <span>{{ restriction | capitalize }}</span>
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <button class="btn btn-primary btn-lg" type="submit">Save</button>
+                <p class="small mb-mt-2 text-center m-3">You can always change your choices in the "Food Settings" tab.</p>
+            </div>
+        </form>
+    </div>
+    <script src="../static/alter_food_settings.js"></script>
+{% endblock %}

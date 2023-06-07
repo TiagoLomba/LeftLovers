@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Settings
+{% endblock %}
+
+{% block main %}
+    <div class="container mx-auto">
+        <div class="card p-4">
+            <form action="/settings" method="POST">
+                <div class="mb-3">
+                    <h5 class="mb-3">Change Password</h5>
+                    <div class="mb-3">
+                        <input class="form-control form-control-sm mx-auto" autocomplete="off" autofocus id="currentPassword" name="currentPassword" placeholder="Current Password" type="password" style="width:50%;">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control form-control-sm mx-auto" autocomplete="off" autofocus id="newPassword" name="newPassword" placeholder="New Password" type="password" style="width:50%;">
+                    </div>
+                    <p class="small text-danger">{{errorMessage}}</p>
+                    <div class="d-grid gap-2 mx-auto" style="width: 50%;">
+                        <button class="btn btn-secondary" id="saveNewPassword" type="submit">Save</button>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h5 class="mb-3">Change Username</h5>
+                    <div class="mb-3">
+                        <input class="form-control form-control-sm mx-auto" autocomplete="off" autofocus id="newUsername" name="newUsername" placeholder="New Username" type="text" style="width:50%;">
+                    </div>
+                    <div class="d-grid gap-2 mx-auto" style="width: 50%;">
+                        <button class="btn btn-small btn-secondary btn-block" id="saveNewUser" type="submit">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

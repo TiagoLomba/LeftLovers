@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+    <!--Index-->
+    <div class="container">
+        <form action="/recipe_index" method="POST" id="index-form">
+            <div class="form-container rounded-container">
+                <h2 class="text-center mb-3 fw-5">What is in my fridge?</h2>
+                <div class="ingredients-inputs">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input class="form-control ingr-inp-size" autocomplete="off" autofocus id="ingredients"
+                            name="ingredients" placeholder="Write an ingredient" type="text">
+                        <button type="button" class="btn btn-secondary add-ingredients-btn"><i
+                                class="bi bi-plus"></i></button>
+                    </div>
+                    <p class="small mb-mt-2 text-center text-danger error-message"></p>
+                </div>
+                <h3 class="text-center mb-3">Cuisine Types<span class="ms-1 op-text text-muted">(optional)</span></h3>
+                <div class="checkbox-container row">
+                    {% for cuisine in cuisineType %}
+                    <div class="col-6 col-md-4">
+                        <label for="{{ cuisine }}" class="checkbox-inline m-2">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="form-check-input m-1 select-checkbox"
+                                    id="{{ cuisine }}" name="cuisineType" value="{{ cuisine }}">
+                            </div>
+                            <span>{{ cuisine | capitalize }}</span>
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <h3 class="text-center mb-3">Dish Type<span
+                        class="ms-1 op-text text-muted">(optional)</span></h3>
+                <div class="checkbox-container row justify-content-center align-items-center">
+                    {% for dish in dishType %}
+                    <div class="col-6 col-md-2">
+                        <label for="{{ dish }}" class="checkbox-inline m-2">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="form-check-input m-1 select-checkbox" id="{{ dish }}"
+                                    name="dishType" value="{{ dish }}">
+                            </div>
+                            <span>{{ dish | capitalize }}</span>
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            <h3 class="text-center mb-3">Diet Type<span class="ms-1 op-text text-muted">(optional)</span></h3>
+            <div class="checkbox-container row justify-content-center align-items-center">
+              {% for restriction in health %}
+                <div class="d-flex justify-content-center align-items-center">
+                  <input type="text" class="form-control restrictions-inp restrictions-inp-size" id="{{restriction}}" value="{{restriction}}" readonly>
+                </div>
+              {% endfor %}
+              <div class="hl-container ms-5">
+                <div class="my-2 d-flex justify-content-center align-items-center ms-3">
+                  <select name="health_labels" id="health_labels" class="form-select restrictions-inp-size">
+                    <option value="">Add more health labels</option>
+                    {% for diet in available_health %}
+                      <option value="{{diet}}">{{diet | capitalize}}</option>
+                    {% endfor %}
+                  </select>
+                  <button type="button" class="btn btn-secondary add-dl-btn"><i class="bi bi-plus"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" type="submit">Show me!</button>
+          </div>
+        </form>
+    </div>
+    <script src="../static/Add_ingredients.js/">
+       var available_health = JSON.parse('{{ available_health|tojson|safe }}');
+    </script>
+
+
+{% endblock %}

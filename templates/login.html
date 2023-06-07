@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <div class="form col-md-8 col-lg-6 col-xl-4 mb-5 mt-3 mb-md-0">
+            <form action="/login" method="post">
+                <div class="mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+                </div>
+                <button class="btn btn-primary btn-block px-5" type="submit">Log In</button>
+                <p class="small mb-mt-2 text-center text-danger">{{errorMessage}}</p>
+                <p class="small fw-normal text-center mb-0">Don't have an account? <a href="/register" class="fw-6">Register!</a></p>
+            </form>
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 mt-3 col-auto">
+            <img class="slideshow-img img-fluid d-block mx-auto" name="slideshow" alt="Food image">
+        </div>
+    </div>
+    <script src="../static/image_slideshow.js" ></script>
+{% endblock %}

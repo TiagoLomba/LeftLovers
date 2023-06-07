@@ -1,0 +1,349 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
+
+/* Custom Variables */
+:root {
+  --orange: #F80;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: Poppins;
+  }
+
+/* Font weights */
+.fw-3{
+    font-weight: 300;
+}
+
+.fw-4{
+    font-weight: 400;
+}
+
+.fw-5{
+    font-weight: 500;
+}
+
+.fw-6{
+    font-weight: 600;
+}
+
+.fw-7{
+    font-weight: 700;
+}
+
+.op-text{
+    font-size:20px;
+}
+
+
+  /* Navbar */
+nav .navbar-brand
+{
+    font-size: 40px;
+    font-family: "Leckerli One";
+    letter-spacing: .2rem;
+}
+
+nav .navbar-brand .blue
+{
+    color: var(--orange);
+}
+
+nav .navbar-brand .branding
+{
+    margin-left: 20px;
+    color: #F80;
+}
+
+.smallIcon{
+    margin-left: 5px;
+    width: 25px;
+    height: auto;
+}
+
+/* Menu */
+.menu{
+    font-size:20px;
+    color: var(--orange) !important;
+    cursor: pointer;
+}
+.menu-nav{
+    width: 100%;
+    padding: 10px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 9999;
+}
+
+.menu-nav ul{
+    width: 100%;
+    text-align: right;
+}
+
+.menu-nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+.menu-nav ul li a{
+    color: var(--ora);
+    text-decoration: none;
+}
+
+.sub-menu-wrap{
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    width: 300px;
+    max-height: 0px;
+    overflow: hidden;
+    background-color:#F5F5F5;
+    border-radius: 15px;
+}
+
+.sub-menu-wrap.open-menu{
+    max-height:400px;
+}
+
+.sub-menu{
+    background: #fff;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+}
+
+.sub-menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 12px;
+}
+
+
+.sub-menu-link i, .dark-mode-btn i {
+    width: 40px;
+    height: 40px;
+    background: #e5e5e5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin-right: 15px;
+}
+
+
+
+.sub-menu-link:hover p, i{
+    transform: scale(1.05);
+    text-decoration: none;
+    color: black;
+}
+
+
+/*Image slideshow (login)*/
+.slideshow-img {
+    object-fit: cover;
+    background-size: contain;
+    align-self: center;
+    transition: opacity 1s ease-in-out;
+}
+
+
+input[type=text], input[type=password]{
+    border: 0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.btn-primary{
+    border:0 !important;
+    background-color: var(--orange) !important;
+}
+
+
+/* Recipes index*/
+
+.form-container {
+    background-color: #f2f2f2;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+.card{
+    color: black;
+    text-decoration: none;
+}
+
+.ingr-inp-size {
+    width: 50%;
+}
+
+.restrictions-inp-size{
+    width: 35%;
+}
+.restrictions-inp{
+    pointer-events: none;
+}
+
+.badge {
+    color: white;
+    margin-right: 5px;
+  }
+
+.ing-badge{
+    background-color: var(--orange);
+    font-size: 15px;
+}
+
+/* Checkboxes */
+
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+
+.rounded-container {
+    border-radius: 10px;
+}
+
+
+.select-checkbox:checked {
+    background-color: green;
+    outline: none;
+    border: none;
+    box-shadow: 0 1px 1px rgba(20, 20, 2, 0.075) inset, 0 0 8px rgba(20, 20, 2, 0.2);
+    content: #2718;
+}
+
+.checkbox-restrictions:checked {
+    background-color: red;
+    outline: none;
+    border: none;
+    box-shadow: 0 1px 1px rgba(20, 20, 2, 0.075) inset, 0 0 8px rgba(20, 20, 2, 0.2);
+}
+
+
+
+
+/* Button */
+.add-ingredients-btn, .add-dl-btn{
+    margin-left: 1.5rem;
+}
+
+.btn-secondary:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+
+/*Hover effects*/
+.nav-link:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.recipes-card:hover {
+    color: black;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+
+.btn-circle:hover {
+    background-color: #5a6268;
+}
+
+
+/* Buttons */
+    /* Back to the top */
+.back-to-top {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    border-radius: 100%;
+    background: #696969;
+    padding: 0.6rem;
+    border: none;
+    cursor: pointer;
+    opacity: 100%;
+    transition: opacity 0.5s;
+}
+
+.back-to-top:hover {
+opacity: 60%;
+}
+
+.hidden {
+opacity: 0%;
+}
+
+.back-to-top-icon {
+width: 1rem;
+height: 1rem;
+color: var(--orange);
+}
+
+
+    /* Dark Mode */
+.dark-mode-btn {
+    background-color: transparent;
+    border: none;
+    color: #525252;
+    display: flex;
+    align-items: center;
+    outline: none;
+}
+
+.dark-mode-btn:focus,
+.dark-mode-btn:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.dark-mode {
+    background-color: black;
+  }
+
+
+body.dark-mode .menu-nav ul li a,
+body.dark-mode .menu-nav ul li a:hover {
+  color: #ffffff; /* Change the text color to white */
+}
+
+
+
+
+@media (max-width: 768px) {
+    .sub-menu-wrap.open-menu {
+      max-height: auto;
+      width: auto;
+      right: 10px;
+    }
+
+    .sub-menu {
+      width: auto;
+      padding: 20px 0;
+    }
+  }

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipes
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        {% if recipes_list %}
+            <h1 class="my-5 text-center mb-0">Voilá!</h1>
+            <h3 class="my-5 text-center mt-1 mb-2">Now you just need to choose</h3>
+            <div class="badges-container mb-3 d-flex flex-wrap justify-content-center">
+                {% for ingredient in ingredients.split(" ") %}
+                    <div class="badges mb-2 me-2">
+                        <span class="badge ing-badge">{{ ingredient }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="form-container rounded-container">
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    {% for recipe in recipes_list %}
+                        <div class="col">
+                            <a href="{{ recipe['url'] }}" target="_blank" class="card recipes-card h-100 rounded">
+                                <img src="{{ recipe['image'] }}" class="card-img-top" alt="{{ recipe['label'] }}">
+                                <div class="card-body d-flex flex-column justify-content-between h-100">
+                                    <h5 class="card-title mb-0">{{ recipe['label'] }}</h5>
+                                    <div class="badges mb-3">
+                                        {% for cuisine in recipe['cuisineType'] %}
+                                            <span class="badge bg-secondary me-1">{{ cuisine }}</span>
+                                        {% endfor %}
+                                        {% for meal in recipe['mealType'] %}
+                                            <span class="badge bg-secondary me-1">{{ meal }}</span>
+                                        {% endfor %}
+                                        {% for dish in recipe['dishType'] %}
+                                            <span class="badge bg-secondary me-1">{{ dish }}</span>
+                                        {% endfor %}
+                                        {% for health in recipe['healthLabels'] %}
+                                            {% if health in ['Vegan', 'Vegetarian', 'Pescatarian'] %}
+                                                <span class="badge bg-secondary me-1">{{ health }}</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    {% if recipe['calories'] != 0 and recipe['calories'] %}
+                                        <p class="bi bi-fire"> {{ recipe['calories'] }} Calories</p>
+                                    {% else %}
+                                        <p class="bi bi-fire"> No data </p>
+                                    {% endif %}
+                                    {% if recipe['totalTime'] != 0  and recipe['totalTime'] > 0 and recipe['totalTime'] < 500 %}
+                                        <p class="bi bi-clock"> {{ recipe['totalTime'] }} min.</p>
+                                    {% else %}
+                                        <p class="bi bi-clock"> No data</p>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-3">
+                    {% if nextPageLink %}
+                        <form action="/recipe_index" method="POST">
+                            <input type="hidden" name="ingredients" value="{{ ingredients }}">
+                            <button class="btn btn-primary btn-lg" name="nextPageLink" type="submit" value={{nextPageLink}}>Next Page</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="container text-center mb-4">
+                <img class="center-block" src="https://i.imgflip.com/7n7dmz.jpg" alt = "Recipe Not found" title="404-Meme" />
+            </div>
+                <div class="container text-center">
+                    <a href="/">
+                        <button class="btn btn-primary btn-lg" name="back-button">Go back</button>
+                    </a>
+                </div>
+        {% endif %}
+    </div>
+{% endblock %}
