@@ -295,12 +295,16 @@ def register():
         if not username or not password or not passwordConfirmation:
             errorMessage = "Please insert a valid username and/or password"
             return render_template("register.html", errorMessage=errorMessage)
-        elif cur.execute("SELECT * FROM users WHERE username = ?", (username)).fetchone() is not None:
-            errorMessage = "Username already registered"
+        elif len(password) <  6:
+            errorMessage = "Password is too short"
             return render_template("register.html", errorMessage=errorMessage)
         elif password != passwordConfirmation:
             errorMessage = "Passwords do not match!"
             return render_template("register.html", errorMessage=errorMessage)
+        elif cur.execute("SELECT * FROM users WHERE username = ?", (username)).fetchone() is not None:
+            errorMessage = "Username already registered"
+            return render_template("register.html", errorMessage=errorMessage)
+        
 
         #Add user to database
         cur.execute("INSERT INTO users (name, username, hash) VALUES (?,?,?)", (name, username, generate_password_hash(password)))
