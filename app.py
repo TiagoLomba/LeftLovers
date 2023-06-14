@@ -135,16 +135,17 @@ def index():
         user_data = cur.execute("SELECT cuisineType, healthType FROM users WHERE id=?", (user_id,))
         user_data = cur.fetchone()
         con.close()
-        if user_data is not None:
+        if user_data[0] is not None and user_data[1] is not None:
             #Parse JSON strings and convert them into python dictionaries
             cuisine_types = json.loads(user_data[0])
             health_types = json.loads(user_data[1])
+            print("/n HealthTypes: ", health_types)
             #Only show the available options
             available_health = {key: value for key, value in health.items() if key not in health_types}
             return render_template("index.html", cuisineType=cuisine_types, dishType=dishType, health=health_types, available_health=available_health, name=name)
         else:
             available_health = {key: value for key, value in health.items()}
-            return render_template("index.html", cuisineType=cuisineType, dishType=dishType, health=health)
+            return render_template("index.html", cuisineType=cuisineType, dishType=dishType, health={}, available_health=available_health, name=name)
 
 
 @app.route("/get_available_health", methods=["GET"])

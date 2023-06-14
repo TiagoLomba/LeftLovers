@@ -328,11 +328,9 @@ color: var(--orange);
 
 
 body.dark-mode .menu-nav ul li a,
-body.dark-mode .menu-nav ul li a:hover {
+body.dark-mode .menu-nav ul li a:hover, body.dark-mode h2.header{
   color: #ffffff; /* Change the text color to white */
 }
-
-
 
 
 @media (max-width: 768px) {

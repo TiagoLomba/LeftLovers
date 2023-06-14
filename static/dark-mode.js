@@ -3,6 +3,7 @@ let darkModePreference = localStorage.getItem('darkMode');
 
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
+;
 
   let isDarkMode = document.body.classList.contains('dark-mode');
 
