@@ -302,7 +302,7 @@ def register():
         elif password != passwordConfirmation:
             errorMessage = "Passwords do not match!"
             return render_template("register.html", errorMessage=errorMessage)
-        elif cur.execute("SELECT * FROM users WHERE username = ?", (username)).fetchone() is not None:
+        elif cur.execute("SELECT * FROM users WHERE username = ?", (username,)).fetchone() is not None:
             errorMessage = "Username already registered"
             return render_template("register.html", errorMessage=errorMessage)
         

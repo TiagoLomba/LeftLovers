@@ -4,10 +4,11 @@ import sqlite3
 
 from flask import redirect, render_template, request, session
 from functools import wraps
-
+from os import path
 
 from datetime import datetime, timezone
 
+ROOT = path.dirname(path.realpath(__file__))
 
 def login_required(f):
     """
@@ -31,7 +32,7 @@ def time_now():
     return str(now_utc.date()) + ' @time ' + now_utc.time().strftime("%H:%M:%S")
 
 
-def database_connect(db = "leflovers.db"):
+def database_connect(db=path.join(ROOT, "leflovers.db")):
     con = sqlite3.connect(db)
     cur = con.cursor()
     return con, cur
