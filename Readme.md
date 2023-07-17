@@ -1,14 +1,16 @@
 # LeftLovers
-Find recipes based on the ingredients you have!
+Find recipes based on the ingredients you have! 
+LeftLovers is a website that shows different types of recipes based on the user criteria such as cuisine type, health restrictions and dish type. If you are tired of always cooking the same exact meals, check out this website for new ideas and enjoy your next delicious dish!
 
 ## Website
-(tiagolombaa.pythonanywhere.com)
+Check out the [website](tiagolombaa.pythonanywhere.com)
 
 - Personalize your profile by choosing diet restricitons and foods you do not like
 - Specify what type of meal you want to cook and what type of cuisine
 - VOILÁ!
 
 <!-- ### Video Demo : -->
+The video demo of the website content and how it works can be found [here](https://youtu.be/0c1cq52RFlw)
 
 ## Instalation
 - Clone / fork this repository.
