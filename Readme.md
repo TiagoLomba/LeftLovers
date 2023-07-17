@@ -9,7 +9,7 @@ Check out the [website](tiagolombaa.pythonanywhere.com)
 - Specify what type of meal you want to cook and what type of cuisine
 - VOILÁ!
 
-<!-- ### Video Demo : -->
+### Video Demo :
 The video demo of the website content and how it works can be found [here](https://youtu.be/0c1cq52RFlw)
 
 ## Instalation
